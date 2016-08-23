@@ -11,44 +11,44 @@ public class ComputerTest{
     game = new Game();
   }
 
-@Test
-public void hasNickname(){
-  assertEquals("Bladestorm", computer.getNickName());
-}
-
-@Test
-public void computerStartsEmpty(){
-  assertEquals(0, computer.gamesCount());
-}
-
-@Test
-public void canInstallGame(){
-  computer.install(game);
-  assertEquals(1, computer.gamesCount());
-}
-
-@Test
-public void libraryIsFull(){
-  for (int i = 0; i < 15; i++){
-    computer.install(game);
+  @Test
+  public void hasNickname(){
+    assertEquals("Bladestorm", computer.getNickName());
   }
-  assertEquals(true, computer.libraryFull());
-}
 
-@Test
-public void cannotInstallGameWhenLibraryFull(){
-  for (int i = 0; i < 16; i++){
+  @Test
+  public void computerStartsEmpty(){
+    assertEquals(0, computer.gamesCount());
+  }
+
+  @Test
+  public void canInstallGame(){
     computer.install(game);
-  } 
-  assertEquals(15, computer.gamesCount());
-}
+    assertEquals(1, computer.gamesCount());
+  }
 
-@Test
-public void libraryEmptyAfterCleanInstall(){
-  computer.install(game);
-  assertEquals(1, computer.gamesCount());
-  computer.cleanInstall();
-  assertEquals(0, computer.gamesCount());
-}
+  // @Test
+  // public void libraryIsFull(){
+  //   for (int i = 0; i < 15; i++){
+  //     computer.install(game);
+  //   }
+  //   assertEquals(true, computer.libraryFull());
+  // }
+
+  // @Test
+  // public void cannotInstallGameWhenLibraryFull(){
+  //   for (int i = 0; i < 16; i++){
+  //     computer.install(game);
+  //   } 
+  //   assertEquals(15, computer.gamesCount());
+  // }
+
+  @Test
+  public void libraryEmptyAfterCleanInstall(){
+    computer.install(game);
+    assertEquals(1, computer.gamesCount());
+    computer.cleanInstall();
+    assertEquals(0, computer.gamesCount());
+  }
 
 }

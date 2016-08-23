@@ -1,3 +1,5 @@
-class Game {
+public interface Game {
+
+  int installSize();
   
 }

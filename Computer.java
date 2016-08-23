@@ -1,33 +1,38 @@
 public class Computer{
 
   private String nickname;
-  private Game[] library;
+  private int storageCapacity;
+  private ArrayList<Game> library;
 
-  public Computer(String nickname){
+  public Computer(String nickname, int storageCapacity){
     this.nickname = nickname;
-    this.library = new Game[15];
+    this.storageCapacity = storageCapacity;
+    this.library = new ArrayList<Game>();
   }
 
   public String getNickName(){
     return this.nickname;
   }
 
-  public int gamesCount(){
-    int counter = 0;
-    for (Game game : library){
-      if (game != null) counter++;
-    }
-    return counter;
+  public int getStorageCapacity(){
+    return this.storageCapacity;
   }
 
-  public boolean libraryFull(){
-    return gamesCount() == library.length;
+  public int gamesCount(){
+    return library.size();
+  }
+
+  public int memoryUsed(){
+    int total = 0;
+    for (Game game : library){
+      total += game.installSize();
+    }
+    return total;
   }
 
   public void install(Game game){
-    if(libraryFull()) return;
-    int index = gamesCount();
-    library[index] = game;
+    if(memoryUsed() + game.installSize() <= getStorageCapacity) return;
+    library.add(game);
   }
 
 public void cleanInstall(){
