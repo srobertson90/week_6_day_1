@@ -3,12 +3,12 @@ import org.junit.*;
 
 public class ComputerTest{
   Computer computer;
-  Game game;
+  ShootyGame shootyGame;
 
   @Before
   public void before(){
-    computer = new Computer("Bladestorm");
-    game = new Game();
+    computer = new Computer("Bladestorm", 50);
+    shootyGame = new ShootyGame();
   }
 
   @Test
@@ -23,29 +23,21 @@ public class ComputerTest{
 
   @Test
   public void canInstallGame(){
-    computer.install(game);
+    computer.install(shootyGame);
     assertEquals(1, computer.gamesCount());
   }
 
-  // @Test
-  // public void libraryIsFull(){
-  //   for (int i = 0; i < 15; i++){
-  //     computer.install(game);
-  //   }
-  //   assertEquals(true, computer.libraryFull());
-  // }
-
-  // @Test
-  // public void cannotInstallGameWhenLibraryFull(){
-  //   for (int i = 0; i < 16; i++){
-  //     computer.install(game);
-  //   } 
-  //   assertEquals(15, computer.gamesCount());
-  // }
+  @Test
+  public void cannotInstallGameWhenLibraryIsFull(){
+    for (int i = 0; i < 2; i++){
+      computer.install(shootyGame);
+    }
+    assertEquals(1, computer.gamesCount());
+  }
 
   @Test
   public void libraryEmptyAfterCleanInstall(){
-    computer.install(game);
+    computer.install(shootyGame);
     assertEquals(1, computer.gamesCount());
     computer.cleanInstall();
     assertEquals(0, computer.gamesCount());

@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Computer{
 
   private String nickname;
@@ -31,12 +33,12 @@ public class Computer{
   }
 
   public void install(Game game){
-    if(memoryUsed() + game.installSize() <= getStorageCapacity) return;
+    if(memoryUsed() + game.installSize() > getStorageCapacity()) return;
     library.add(game);
   }
 
 public void cleanInstall(){
-  this.library = new Game[15];
+  this.library = new ArrayList<Game>();
 }
 
 
