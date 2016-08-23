@@ -37,9 +37,9 @@ public class Computer{
     library.add(game);
   }
 
-public void cleanInstall(){
-  this.library = new ArrayList<Game>();
-}
+  public void cleanInstall(){
+    this.library = new ArrayList<Game>();
+  }
 
 
 }
